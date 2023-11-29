@@ -1,0 +1,13 @@
+.card-container {
+  height: fit-content;
+  width: fit-content;
+  margin: 10px;
+  padding-right: 20px;
+  border-radius: 10px;
+  background-color: black;
+  color: wheat;
+}
+
+li {
+  margin: 4px;
+}
