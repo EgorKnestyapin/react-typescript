@@ -9,8 +9,8 @@ function Homework20() {
   let email: string = "john.doe@google.com";
   let programLangs: string[] = ["JavaScript", "Python", "Machine Learning"];
 
-  const mapProgramLangs = programLangs.map((programLang) => {
-    return <li>{programLang}</li>;
+  const mapProgramLangs = programLangs.map((programLang: string) => {
+    return <li key={`program-lang-${Math.random()}`}>{programLang}</li>;
   });
 
   return (
