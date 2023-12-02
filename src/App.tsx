@@ -1,14 +1,15 @@
 import "./App.css";
-import Homework20 from "./homeworks/homework20";
+import Lesson21 from "./lessons/lesson21";
 
 function App() {
   return (
     <div className="App">
       {/* Lessons */}
       {/* <Lesson20 /> */}
+      <Lesson21 />
 
       {/* Homeworks */}
-      <Homework20 />
+      {/* <Homework20 /> */}
     </div>
   );
 }
