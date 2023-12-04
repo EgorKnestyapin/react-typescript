@@ -27,7 +27,7 @@ function Homework21() {
           alt="like"
           onClick={plusLike}
         />
-        <p>{like || undefined}</p>
+        {like > 0 && <p>{like}</p>}
       </div>
       <div className="dislike-container">
         <img
@@ -35,7 +35,7 @@ function Homework21() {
           alt="dislike"
           onClick={plusDislike}
         />
-        <p>{dislike || undefined}</p>
+        {dislike > 0 && <p>{dislike}</p>}
       </div>
       <div className="button-container">
         <Button name="Reset Results" onClick={resetResults} />

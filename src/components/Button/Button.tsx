@@ -3,7 +3,7 @@ import "./styles.css";
 interface ButtonProps {
   name?: string;
   type?: "submit" | "reset" | "button" | undefined;
-  onClick?: () => void;
+  onClick: () => void;
 }
 
 function Button({ name = "Send", type = "submit", onClick }: ButtonProps) {
