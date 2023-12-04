@@ -1,5 +1,5 @@
+import Lesson22 from "lessons/lesson22";
 import "./App.css";
-import Homework21 from "./homeworks/homework21";
 
 function App() {
   return (
@@ -7,10 +7,11 @@ function App() {
       {/* Lessons */}
       {/* <Lesson20 /> */}
       {/* <Lesson21 /> */}
+      <Lesson22 />
 
       {/* Homeworks */}
       {/* <Homework20 /> */}
-      <Homework21 />
+      {/* <Homework21 /> */}
     </div>
   );
 }
