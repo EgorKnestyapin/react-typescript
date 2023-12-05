@@ -10,5 +10,5 @@ export const InputContainer = styled.div`
 
 export const InputStyle = styled.input`
   display: flex;
-  // по сути этот блок не нужен, так как disable и так работает
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "auto")};
 `;
