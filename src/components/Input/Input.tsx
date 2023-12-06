@@ -1,4 +1,4 @@
-import { InputContainer, InputStyle } from "./styles";
+import { InputContainer, InputStyle, LabelComponent } from "./styles";
 import { InputProps } from "./types";
 
 function Input({
@@ -10,7 +10,7 @@ function Input({
 }: InputProps) {
   return (
     <InputContainer>
-      <label htmlFor={labelName + "Input"}>{labelName}</label>
+      <LabelComponent htmlFor={labelName + "Input"}>{labelName}</LabelComponent>
       <InputStyle
         value={value}
         onChange={onChange}

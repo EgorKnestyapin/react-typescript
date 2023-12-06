@@ -22,11 +22,13 @@ function Homework22() {
           labelName="Email"
           value={emailValue}
           onChange={onChangeEmailInput}
+          placeholder="Enter"
         />
         <Input
           labelName="Password"
           value={passwordValue}
           onChange={onChangePasswordValue}
+          placeholder="Enter"
         />
         <ButtonContainer>
           <Button name="Login" onClick={() => console.log("Login Action")} />

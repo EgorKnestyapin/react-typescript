@@ -1,5 +1,5 @@
+import Homework23 from "homeworks/homework23";
 import GlobalStyles from "styles/GlobalStyles";
-import Homework22 from "homeworks/homework22";
 
 function App() {
   return (
@@ -13,7 +13,8 @@ function App() {
       {/* Homeworks */}
       {/* <Homework20 /> */}
       {/* <Homework21 /> */}
-      <Homework22 />
+      {/* <Homework22 /> */}
+      <Homework23 />
     </>
   );
 }
