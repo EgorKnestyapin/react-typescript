@@ -1,3 +1,4 @@
+import { useState, ChangeEvent, SetStateAction, Dispatch } from "react";
 import Input from "components/Input";
 import {
   CreatePersonCard,
@@ -8,8 +9,13 @@ import {
   PersonInfoSmall,
 } from "./styles";
 import Button from "components/Button";
-import { useState, ChangeEvent } from "react";
 
+interface UserInfo {
+  name: string;
+  lastName: string;
+  ageValue: string;
+  jobPosition: string;
+}
 function Homework23() {
   const [isPersonCard, setPersonCard] = useState<boolean>(false);
   const [nameValue, setNameValue] = useState<string>("");
@@ -17,17 +23,33 @@ function Homework23() {
   const [ageValue, setAgeValue] = useState<string>("");
   const [positionValue, setPositionValue] = useState<string>("");
 
-  const onChangeNameValue = (event: ChangeEvent<HTMLInputElement>) => {
-    setNameValue(event.target.value);
-  };
-  const onChangeSurnameValue = (event: ChangeEvent<HTMLInputElement>) => {
-    setSurnameValue(event.target.value);
-  };
-  const onChangeAgeValue = (event: ChangeEvent<HTMLInputElement>) => {
-    setAgeValue(event.target.value);
-  };
-  const onChangePositionValue = (event: ChangeEvent<HTMLInputElement>) => {
-    setPositionValue(event.target.value);
+  // Создаем контейнер(стейт), в котором будет хранится информация для карточки,
+  // чтобы она добавлялась только на onClick
+  const [person, setPerson] = useState<UserInfo>({
+    name: "",
+    lastName: "",
+    ageValue: "",
+    jobPosition: "",
+  });
+
+  // const onChangeNameValue = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setNameValue(event.target.value);
+  // };
+  // const onChangeSurnameValue = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setSurnameValue(event.target.value);
+  // };
+  // const onChangeAgeValue = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setAgeValue(event.target.value);
+  // };
+  // const onChangePositionValue = (event: ChangeEvent<HTMLInputElement>) => {
+  //   setPositionValue(event.target.value);
+  // };
+
+  const onChangeValue = (
+    event: ChangeEvent<HTMLInputElement>,
+    setFieldValue: Dispatch<SetStateAction<string>>
+  ) => {
+    setFieldValue(event.target.value);
   };
 
   return (
@@ -36,33 +58,48 @@ function Homework23() {
         <Input
           labelName="Имя"
           placeholder="Иван"
-          onChange={onChangeNameValue}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeValue(event, setNameValue)
+          }
           value={nameValue}
         />
         <Input
           labelName="Фамилия"
           placeholder="Василевский"
-          onChange={onChangeSurnameValue}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeValue(event, setSurnameValue)
+          }
           value={surnameValue}
         />
         <Input
           labelName="Возраст"
           placeholder="25"
-          onChange={onChangeAgeValue}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeValue(event, setAgeValue)
+          }
           value={ageValue}
         />
         <Input
           labelName="Должность"
           placeholder="Старший специалист"
-          onChange={onChangePositionValue}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            onChangeValue(event, setPositionValue)
+          }
           value={positionValue}
         />
         <Button
           onClick={() => {
             if (nameValue && surnameValue && ageValue && positionValue) {
+              setPerson({
+                name: nameValue,
+                lastName: surnameValue,
+                ageValue: ageValue,
+                jobPosition: positionValue,
+              });
               setPersonCard(true);
             } else {
-              alert("Введите данные сотрудника");
+              setPersonCard(false);
+              setTimeout(() => alert("Введите данные сотрудника"), 0);
             }
           }}
         />
@@ -71,19 +108,19 @@ function Homework23() {
         <PersonCard>
           <PersonInfoContainer>
             <PersonInfoSmall>Имя</PersonInfoSmall>
-            <PersonInfoBig>{nameValue}</PersonInfoBig>
+            <PersonInfoBig>{person.name}</PersonInfoBig>
           </PersonInfoContainer>
           <PersonInfoContainer>
             <PersonInfoSmall>Фамилия</PersonInfoSmall>
-            <PersonInfoBig>{surnameValue}</PersonInfoBig>
+            <PersonInfoBig>{person.lastName}</PersonInfoBig>
           </PersonInfoContainer>
           <PersonInfoContainer>
             <PersonInfoSmall>Возраст</PersonInfoSmall>
-            <PersonInfoBig>{ageValue}</PersonInfoBig>
+            <PersonInfoBig>{person.ageValue}</PersonInfoBig>
           </PersonInfoContainer>
           <PersonInfoContainer>
             <PersonInfoSmall>Должность</PersonInfoSmall>
-            <PersonInfoBig>{positionValue}</PersonInfoBig>
+            <PersonInfoBig>{person.jobPosition}</PersonInfoBig>
           </PersonInfoContainer>
         </PersonCard>
       )}
