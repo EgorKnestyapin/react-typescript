@@ -1,4 +1,4 @@
-import Lesson25 from "lessons/lesson25";
+import Homework25 from "homeworks/homework25";
 import GlobalStyles from "styles/GlobalStyles";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
       {/* <Lesson21 /> */}
       {/* <Lesson22 /> */}
       {/* <Lesson24 /> */}
-      <Lesson25 />
+      {/* <Lesson25 /> */}
 
       {/* Homeworks */}
       {/* <Homework20 /> */}
@@ -18,6 +18,7 @@ function App() {
       {/* <Homework22 /> */}
       {/* <Homework23 /> */}
       {/* <Homework24 /> */}
+      <Homework25 />
     </>
   );
 }

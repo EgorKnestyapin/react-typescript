@@ -14,6 +14,7 @@ function Input({
   name,
   onChange,
   error = undefined,
+  type,
 }: InputProps) {
   return (
     <InputContainer>
@@ -21,7 +22,7 @@ function Input({
       <InputStyle
         value={value}
         onChange={onChange}
-        type="text"
+        type={type}
         name={name}
         placeholder={placeholder}
         id={labelName + "Input"}

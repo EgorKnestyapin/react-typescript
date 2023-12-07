@@ -12,7 +12,7 @@ export const InputContainer = styled.div`
 `;
 
 export const LabelComponent = styled.label`
-  color: grey;
+  color: black;
 `;
 
 export const InputStyle = styled.input<InputComponentsProps>`
