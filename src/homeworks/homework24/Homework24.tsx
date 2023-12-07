@@ -17,7 +17,7 @@ function Homework24() {
   const [jokeValue, setJokeValue] = useState<Joke | undefined>();
   const [jokeError, setJokeError] = useState<string | undefined>();
 
-  const getRandomJoke = async () => {
+  const getRandomJoke = async (isClicked?: boolean) => {
     const response = await fetch(
       "https://official-joke-api.appspot.com/random_joke"
     );
@@ -25,22 +25,20 @@ function Homework24() {
     if (response.ok) {
       const data = await response.json();
       setJokeValue({ setup: data.setup, punchline: data.punchline });
+      if (isClicked) {
+        alert("Вы получили новую шутку");
+      }
     } else {
       setJokeError("Ошибка при получении данных");
+      if (isClicked) {
+        alert("Ошибка");
+      }
     }
   };
 
   useEffect(() => {
     getRandomJoke();
   }, []);
-
-  useEffect(() => {
-    alert("Вы получили новую шутку");
-  }, [jokeValue]);
-
-  useEffect(() => {
-    alert("Ошибка при получении данных");
-  }, [jokeError]);
 
   return (
     <Homework24Wrapper>
@@ -59,7 +57,10 @@ function Homework24() {
             <TextBig>{jokeError}</TextBig>
           </TextContainer>
         )}
-        <Button name="Get new joke" onClick={getRandomJoke}></Button>
+        <Button
+          name="Get new joke"
+          onClick={() => getRandomJoke(true)}
+        ></Button>
       </Card>
     </Homework24Wrapper>
   );
