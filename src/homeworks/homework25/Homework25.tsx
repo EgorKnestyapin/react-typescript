@@ -1,11 +1,13 @@
 import Input from "components/Input";
 import {
   Homework25Wrapper,
-  LoginForm,
+  ShopForm,
   ProductInfoContainer,
   ProductParBig,
   ProductParSmall,
   Text,
+  ProductCard,
+  ErrorContainer,
 } from "./styles";
 import { useFormik } from "formik";
 import Button from "components/Button";
@@ -16,7 +18,7 @@ interface FormValues {
   productName: string;
   productPrice: string;
   productDescription: string;
-  termsOfUse: string;
+  termsOfUse: boolean;
 }
 
 interface Product {
@@ -34,6 +36,7 @@ function Homework25() {
       .min(2, "Минимальное количество символов: 2")
       .max(50, "Максимальное количество символов: 50"),
     productPrice: Yup.number()
+      .typeError("Цена товара должна быть числом")
       .required("Необходимо ввести цену товара")
       // max в number работает по-другому, 15 - не максимальное количество символов,
       // а максимальное число
@@ -42,17 +45,17 @@ function Homework25() {
       150,
       "Максимальное количество символов: 150"
     ),
-    termsOfUse: Yup.boolean().required('Необходимо поставить "галочку"'),
+    termsOfUse: Yup.boolean().oneOf([true], 'Необходимо поставить "галочку"'),
   });
   const formik = useFormik({
     initialValues: {
       productName: "",
       productPrice: "",
       productDescription: "",
-      termsOfUse: "",
+      termsOfUse: false,
     } as FormValues,
     validationSchema,
-    onSubmit: (values) => {
+    onSubmit: (values: FormValues) => {
       setProduct({
         productName: values.productName,
         productPrice: values.productPrice,
@@ -63,7 +66,7 @@ function Homework25() {
 
   return (
     <Homework25Wrapper>
-      <LoginForm onSubmit={formik.handleSubmit}>
+      <ShopForm onSubmit={formik.handleSubmit}>
         <Text>Создание товара</Text>
         <Input
           labelName="Название товара*"
@@ -81,28 +84,28 @@ function Homework25() {
           onChange={formik.handleChange}
           error={formik.errors.productPrice}
         />
-        <Input
-          labelName="Описание товара"
+        <p>Описание товара</p>
+        <textarea
           placeholder="Введите описание товара"
           name="productDescription"
-          type="text"
           value={formik.values.productDescription}
           onChange={formik.handleChange}
-          error={formik.errors.productDescription}
         />
-        <Input
-          labelName="Правило использования*"
+        <ErrorContainer>{formik.errors.productDescription}</ErrorContainer>
+        <p>Правило использования*</p>
+        <input
+          style={{ width: "50px", height: "50px" }}
+          onChange={formik.handleChange}
           name="termsOfUse"
           type="checkbox"
-          value={formik.values.termsOfUse}
-          onChange={formik.handleChange}
-          error={formik.errors.termsOfUse}
+          // checked={formik.values.termsOfUse}
         />
+        <ErrorContainer>{formik.errors.termsOfUse}</ErrorContainer>
         <Button name="Создать товар" type="submit"></Button>
         <Text>* - обязательное поле</Text>
-      </LoginForm>
+      </ShopForm>
       {product && (
-        <LoginForm>
+        <ProductCard>
           <ProductInfoContainer>
             <ProductParSmall>Название товара</ProductParSmall>
             <ProductParBig>{product?.productName}</ProductParBig>
@@ -115,7 +118,7 @@ function Homework25() {
             <ProductParSmall>Описание товара</ProductParSmall>
             <ProductParBig>{product?.productDescription}</ProductParBig>
           </ProductInfoContainer>
-        </LoginForm>
+        </ProductCard>
       )}
     </Homework25Wrapper>
   );
