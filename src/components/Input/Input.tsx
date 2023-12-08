@@ -1,4 +1,9 @@
-import { InputContainer, InputStyle, LabelComponent } from "./styles";
+import {
+  ErrorContainer,
+  InputContainer,
+  InputStyle,
+  LabelComponent,
+} from "./styles";
 import { InputProps } from "./types";
 
 function Input({
@@ -6,7 +11,10 @@ function Input({
   placeholder = "Enter",
   disabled = false,
   value,
+  name,
   onChange,
+  error = undefined,
+  type,
 }: InputProps) {
   return (
     <InputContainer>
@@ -14,11 +22,14 @@ function Input({
       <InputStyle
         value={value}
         onChange={onChange}
-        type="text"
+        type={type}
+        name={name}
         placeholder={placeholder}
         id={labelName + "Input"}
         disabled={disabled}
+        $error={error}
       />
+      <ErrorContainer>{error}</ErrorContainer>
     </InputContainer>
   );
 }
