@@ -1,6 +1,10 @@
 import Layout from "components/Layout";
 import About from "pages/About";
+import Apple from "pages/Apple";
+import Clients from "pages/Clients";
+import Facebook from "pages/Facebook";
 import Home from "pages/Home";
+import Sega from "pages/Sega";
 import Users from "pages/Users";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyles from "styles/GlobalStyles";
@@ -14,6 +18,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/users" element={<Users />} />
           <Route path="/about" element={<About />} />
+          <Route path="/clients" element={<Clients />} />
+          <Route path="/clients/facebook" element={<Facebook />} />
+          <Route path="/clients/apple" element={<Apple />} />
+          <Route path="/clients/sega" element={<Sega />} />
           <Route path="*" element="Page not found 404" />
         </Routes>
         {/* Lessons */}
