@@ -1,4 +1,4 @@
-import Message from "../message";
+import Message from "homeworks/homework27/components/message";
 import { CardWrapper } from "./styles";
 
 function Card() {

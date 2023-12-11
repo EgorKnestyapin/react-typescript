@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BlogManagementContext } from "../blogManagement/BlogManagement";
+import { BlogManagementContext } from "homeworks/homework27/components/blogManagement/BlogManagement";
 import { MessageWrapper } from "./styles";
 
 function Message() {

@@ -1,7 +1,7 @@
-import Button from "components/Button";
 import { ChangeEvent, createContext, useState } from "react";
+import Button from "components/Button";
 import { BlogManagementWrapper } from "./styles";
-import Card from "../card";
+import Card from "homeworks/homework27/components/card";
 
 export const BlogManagementContext = createContext<string>("");
 
