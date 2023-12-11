@@ -1,10 +1,10 @@
 import Layout from "components/Layout";
 import About from "pages/About";
-import Apple from "pages/Apple";
+import Apple from "pages/Clients/modules/Apple";
 import Clients from "pages/Clients";
-import Facebook from "pages/Facebook";
+import Facebook from "pages/Clients/modules/Facebook";
 import Home from "pages/Home";
-import Sega from "pages/Sega";
+import Sega from "pages/Clients/modules/Sega";
 import Users from "pages/Users";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyles from "styles/GlobalStyles";

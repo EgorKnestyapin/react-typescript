@@ -20,17 +20,17 @@ export const NavContainer = styled.nav`
 export const NavContainerCol = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
   align-items: center;
 `;
 
 export const StyledNavLink = styled(NavLink)`
-  color: white;
+  color: ${colors.white};
   font-size: 20px;
 `;
 
 export const StyledLink = styled(Link)`
-  color: white;
+  color: ${colors.white};
   font-size: 16px;
 `;
 
