@@ -8,7 +8,7 @@ import Sega from "pages/Clients/modules/Sega";
 import Users from "pages/Users";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyles from "styles/GlobalStyles";
-import Lesson27 from "lessons/lesson27";
+import Homework27 from "homeworks/homework27";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <GlobalStyles />
       <Layout>
         <Routes>
-          <Route path="/" element={<Lesson27 />} />
+          <Route path="/" element={<Homework27 />} />
           <Route path="/users" element={<Users />} />
           <Route path="/about" element={<About />} />
           <Route path="/clients" element={<Clients />} />
