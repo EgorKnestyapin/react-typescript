@@ -9,13 +9,15 @@ import Users from "pages/Users";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import GlobalStyles from "styles/GlobalStyles";
 import Homework27 from "homeworks/homework27";
+import Weather from "pages/Weather";
 
 function App() {
   return (
     <BrowserRouter>
       <GlobalStyles />
-      <Layout>
-        <Routes>
+      <Weather />
+      {/* <Layout> */}
+      {/* <Routes>
           <Route path="/" element={<Homework27 />} />
           <Route path="/users" element={<Users />} />
           <Route path="/about" element={<About />} />
@@ -24,21 +26,21 @@ function App() {
           <Route path="/clients/apple" element={<Apple />} />
           <Route path="/clients/sega" element={<Sega />} />
           <Route path="*" element="Page not found 404" />
-        </Routes>
-        {/* Lessons */}
-        {/* <Lesson20 /> */}
-        {/* <Lesson21 /> */}
-        {/* <Lesson22 /> */}
-        {/* <Lesson24 /> */}
-        {/* <Lesson25 /> */}
-        {/* Homeworks */}
-        {/* <Homework20 /> */}
-        {/* <Homework21 /> */}
-        {/* <Homework22 /> */}
-        {/* <Homework23 /> */}
-        {/* <Homework24 /> */}
-        {/* <Homework25 /> */}
-      </Layout>
+        </Routes> */}
+      {/* Lessons */}
+      {/* <Lesson20 /> */}
+      {/* <Lesson21 /> */}
+      {/* <Lesson22 /> */}
+      {/* <Lesson24 /> */}
+      {/* <Lesson25 /> */}
+      {/* Homeworks */}
+      {/* <Homework20 /> */}
+      {/* <Homework21 /> */}
+      {/* <Homework22 /> */}
+      {/* <Homework23 /> */}
+      {/* <Homework24 /> */}
+      {/* <Homework25 /> */}
+      {/* </Layout> */}
     </BrowserRouter>
   );
 }
