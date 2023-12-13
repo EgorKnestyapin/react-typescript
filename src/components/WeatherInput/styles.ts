@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "styles/colors";
 
 export const InputStyle = styled.input`
   display: flex;
@@ -11,4 +12,7 @@ export const InputStyle = styled.input`
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   color: white;
+  &::placeholder {
+    color: ${colors.white};
+  }
 `;

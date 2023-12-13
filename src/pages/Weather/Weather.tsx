@@ -13,7 +13,6 @@ interface WeatherInfoData {
 }
 
 function Weather() {
-  const APP_ID = "339eefdb8be5d321edc00550315211c1";
   const [city, setCity] = useState<string>("");
   const [weatherInfo, setWeatherInfo] = useState<WeatherInfoData>({
     temp: "",
@@ -22,18 +21,18 @@ function Weather() {
     cityName: "",
   });
   const [weatherError, setWeatherError] = useState<string>("");
+  const APP_ID: string = "339eefdb8be5d321edc00550315211c1";
+  const URL_WEATHER: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APP_ID}`;
 
   const onChangeCity = (event: ChangeEvent<HTMLInputElement>) => {
     setCity(event.target.value);
   };
 
-  const getWeatherInfo = async (CITY_NAME: string) => {
-    const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?q=${CITY_NAME}&appid=${APP_ID}`
-    );
+  const getWeatherInfo = async () => {
+    const response = await fetch(URL_WEATHER);
+    const data = await response.json();
     if (response.ok) {
       setWeatherError("");
-      const data = await response.json();
       const tempFromData = data.main.temp;
       const feelsLikeTempFromData = data.main.feels_like;
       setWeatherInfo({
@@ -44,7 +43,7 @@ function Weather() {
       });
     } else {
       setWeatherInfo({ temp: "", icon: "", cityName: "", feelsLike: "" });
-      setWeatherError("Something went wrong with API data");
+      setWeatherError(data.message);
     }
   };
 
@@ -53,7 +52,7 @@ function Weather() {
       <HeaderWrapper>Weather App</HeaderWrapper>
       <InputButtonWrapper>
         <WeatherInput placeholder="Enter city name" onChange={onChangeCity} />
-        <WeatherButton name="Search" onClick={() => getWeatherInfo(city)} />
+        <WeatherButton name="Search" onClick={getWeatherInfo} />
       </InputButtonWrapper>
       {weatherInfo.cityName && (
         <WeatherInfo

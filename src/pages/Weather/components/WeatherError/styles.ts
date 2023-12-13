@@ -26,6 +26,6 @@ export const ApiError = styled.p`
 
 export const ErrorMessage = styled.p`
   display: flex;
-  font-size: 18px;
+  font-size: 25px;
   color: ${colors.white};
 `;
