@@ -13,7 +13,8 @@ export const ButtonComponent = styled.button<ButtonComponentProps>`
   outline: none;
   cursor: pointer;
   border-radius: 50px;
-  border-radius: 50px;
+  border: 2px solid black;
+  outline: none;
   background: linear-gradient(0deg, #3678b4 0%, #3678b4 100%),
     linear-gradient(270deg, #362a84 0.23%, #5936b4 94.2%), #4a319f;
   color: ${colors.white};

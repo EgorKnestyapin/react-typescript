@@ -14,13 +14,11 @@ interface WeatherInfoData {
 
 function Weather() {
   const [city, setCity] = useState<string>("");
-  const [weatherInfo, setWeatherInfo] = useState<WeatherInfoData>({
-    temp: "",
-    feelsLike: "",
-    icon: "",
-    cityName: "",
-  });
+  const [weatherInfo, setWeatherInfo] = useState<WeatherInfoData | undefined>(
+    undefined
+  );
   const [weatherError, setWeatherError] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
   const APP_ID: string = "339eefdb8be5d321edc00550315211c1";
   const URL_WEATHER: string = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${APP_ID}`;
 
@@ -29,10 +27,17 @@ function Weather() {
   };
 
   const getWeatherInfo = async () => {
+    if (city.length === 0) {
+      alert("Enter city name");
+      return;
+    }
+    setWeatherError("");
+    setWeatherInfo(undefined);
+    setLoading(true);
     const response = await fetch(URL_WEATHER);
     const data = await response.json();
+    setLoading(false);
     if (response.ok) {
-      setWeatherError("");
       const tempFromData = data.main.temp;
       const feelsLikeTempFromData = data.main.feels_like;
       setWeatherInfo({
@@ -42,7 +47,6 @@ function Weather() {
         feelsLike: `${Math.round(feelsLikeTempFromData - 273.15)}°`,
       });
     } else {
-      setWeatherInfo({ temp: "", icon: "", cityName: "", feelsLike: "" });
       setWeatherError(data.message);
     }
   };
@@ -54,7 +58,8 @@ function Weather() {
         <WeatherInput placeholder="Enter city name" onChange={onChangeCity} />
         <WeatherButton name="Search" onClick={getWeatherInfo} />
       </InputButtonWrapper>
-      {weatherInfo.cityName && (
+      {loading && <h2>Loading...</h2>}
+      {weatherInfo && (
         <WeatherInfo
           temp={weatherInfo.temp}
           icon={weatherInfo.icon}
